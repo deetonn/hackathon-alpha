@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import StartMenu from '../StartMenu';
+import Image from 'next/image';
 
 export default function StartButton() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -19,10 +20,12 @@ export default function StartButton() {
         `}
         onClick={() => setIsMenuOpen(!isMenuOpen)}
       >
-        <img 
+        <Image 
           src="/windows-logo.png" 
           alt="Start" 
           className="w-4 h-4"
+          width={16}
+          height={16}
         />
         <span className="font-bold">Start</span>
       </button>

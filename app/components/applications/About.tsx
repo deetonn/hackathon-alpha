@@ -75,7 +75,7 @@ export default function About({windowId}: {windowId: string}) {
           <div className="text-white">
             <h2 className="text-lg font-bold">Windows 95 Web Clone</h2>
             <p>Built with Next.js and React</p>
-            <p className="text-sm">© 2024 Your Name</p>
+            <p className="text-sm">© 2024 Microsoft Corporation</p>
           </div>
         </div>
         

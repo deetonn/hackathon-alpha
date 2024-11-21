@@ -74,16 +74,13 @@ export function Window({
     dispatch({ type: 'FOCUS_WINDOW', payload: id });
   };
 
-  if (isMinimized) {
-    return null;
-  }
-
   return (
     <div 
       ref={windowRef}
       className={`absolute ${
         isMaximized ? 'w-full h-full top-0 left-0' : ''
-      } bg-[#c0c0c0] border-t-[#ffffff] border-l-[#ffffff] border-r-[#808080] border-b-[#808080] border-2 flex flex-col`}
+      } bg-[#c0c0c0] border-t-[#ffffff] border-l-[#ffffff] border-r-[#808080] border-b-[#808080] border-2 flex flex-col
+        ${isMinimized ? 'hidden' : ''}`}
       style={{ 
         left: isMaximized ? 0 : position.x, 
         top: isMaximized ? 0 : position.y,
