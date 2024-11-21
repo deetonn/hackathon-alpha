@@ -74,16 +74,13 @@ export function Window({
     dispatch({ type: 'FOCUS_WINDOW', payload: id });
   };
 
-  if (isMinimized) {
-    return null;
-  }
-
   return (
     <div 
       ref={windowRef}
       className={`absolute ${
         isMaximized ? 'w-full h-full top-0 left-0' : ''
-      } bg-[#c0c0c0] border-t-[#ffffff] border-l-[#ffffff] border-r-[#808080] border-b-[#808080] border-2 flex flex-col`}
+      } bg-[#c0c0c0] border-t-[#ffffff] border-l-[#ffffff] border-r-[#808080] border-b-[#808080] border-2 flex flex-col
+        ${isMinimized ? 'hidden' : ''}`}
       style={{ 
         left: isMaximized ? 0 : position.x, 
         top: isMaximized ? 0 : position.y,
@@ -93,7 +90,7 @@ export function Window({
     >
       <div 
         className={`
-          h-[20px] flex justify-between items-center cursor-move select-none
+          h-[20px] flex justify-between items-center cursor-move select-none shrink-0
           ${state.activeWindowId === id 
             ? 'bg-[#000080] bg-win95-titlebar' 
             : 'bg-[#808080]'
@@ -160,7 +157,7 @@ export function Window({
         </div>
       </div>
 
-      <div className="flex-1 min-h-0 flex">
+      <div className="flex-1 min-h-0 overflow-auto">
         {children}
       </div>
     </div>

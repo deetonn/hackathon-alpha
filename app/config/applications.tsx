@@ -33,8 +33,8 @@ export const applications: Record<string, Application> = {
     id: 'about',
     title: 'About',
     icon: '/icons/about.png',
-    defaultSize: { width: 300, height: 200 },
+    defaultSize: { width: 425, height: 300 },
     defaultPosition: { x: 150, y: 150 },
-    component: <About />
+    component: <About windowId='about' />
   }
 }; 
