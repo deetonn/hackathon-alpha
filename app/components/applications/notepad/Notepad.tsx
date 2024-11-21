@@ -111,7 +111,7 @@ export default function Notepad() {
   };
 
   return (
-    <div className="flex flex-col h-full">
+    <div className="flex flex-col h-full w-full min-h-0">
       <MenuBar 
         isMenuOpen={isMenuOpen}
         onMenuClick={handleMenuClick}
@@ -129,11 +129,11 @@ export default function Notepad() {
         onChange={(e) => setText(e.target.value)}
         onKeyUp={handleCursorPosition}
         onClick={handleCursorPosition}
-        className={`flex-1 p-1 
+        className={`flex-1 min-h-0
           resize-none 
           focus:outline-none 
           font-[Lucida Console] 
-          border-[2px] border-inset
+          border-[1px] border-inset
           bg-white
           text-black
           ${wordWrap ? 'whitespace-pre-wrap' : 'whitespace-pre'}
@@ -141,7 +141,6 @@ export default function Notepad() {
         spellCheck={false}
         autoFocus
       />
-      
       <StatusBar 
         line={cursorPosition.line}
         column={cursorPosition.column}
