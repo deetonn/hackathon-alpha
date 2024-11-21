@@ -42,8 +42,8 @@ export default function TaskBar() {
         ))}
       </div>
 
-      {/* System Tray */}
-      <div className="flex items-center border-inset px-1 py-[2px] gap-1">
+      {/* System Tray - adjusted padding and height */}
+      <div className="flex items-center h-[22px] border-inset px-1">
         <Clock />
       </div>
     </div>

@@ -59,7 +59,7 @@ export default function StartMenu({ onClose }: StartMenuProps) {
           onClick={onClose}
         >
           <img 
-            src="/icons/shutdown.png" 
+            src="/icons/shutdown.webp" 
             alt="Shut Down" 
             className="w-4 h-4"
           />
