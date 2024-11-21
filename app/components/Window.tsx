@@ -8,9 +8,10 @@ interface WindowProps {
   position: { x: number; y: number };
   isMinimized: boolean;
   isMaximized: boolean;
+  size: { width: number; height: number };
 }
 
-export function Window({ id, title, children, position, isMinimized, isMaximized }: WindowProps) {
+export function Window({ id, title, children, position, isMinimized, isMaximized, size }: WindowProps) {
   const { dispatch } = useKernel();
   const [isDragging, setIsDragging] = useState(false);
   const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
@@ -69,16 +70,18 @@ export function Window({ id, title, children, position, isMinimized, isMaximized
     <div 
       ref={windowRef}
       className={`absolute ${
-        isMaximized ? 'w-full h-full top-0 left-0' : 'w-[600px]'
-      } bg-[#c0c0c0] border-t-[#ffffff] border-l-[#ffffff] border-r-[#808080] border-b-[#808080] border-2`}
+        isMaximized ? 'w-full h-full top-0 left-0' : ''
+      } bg-[#c0c0c0] border-t-[#ffffff] border-l-[#ffffff] border-r-[#808080] border-b-[#808080] border-2 flex flex-col`}
       style={{ 
         left: isMaximized ? 0 : position.x, 
         top: isMaximized ? 0 : position.y,
+        width: isMaximized ? '100%' : `${size.width}px`,
+        height: isMaximized ? '100%' : `${size.height}px`,
         display: 'block'
       }}
     >
       <div 
-        className="bg-[#000080] text-white px-2 py-1 flex justify-between items-center cursor-move"
+        className="bg-[#000080] text-white px-2 py-1 flex justify-between items-center cursor-move select-none"
         onMouseDown={handleMouseDown}
       >
         <span>{title}</span>
@@ -103,8 +106,10 @@ export function Window({ id, title, children, position, isMinimized, isMaximized
           </button>
         </div>
       </div>
-      <div className="p-4">
-        {children}
+      <div className="flex-1 overflow-auto">
+        <div className="p-4">
+          {children}
+        </div>
       </div>
     </div>
   );
