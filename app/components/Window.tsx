@@ -93,7 +93,7 @@ export function Window({
     >
       <div 
         className={`
-          h-[20px] flex justify-between items-center cursor-move select-none
+          h-[20px] flex justify-between items-center cursor-move select-none shrink-0
           ${state.activeWindowId === id 
             ? 'bg-[#000080] bg-win95-titlebar' 
             : 'bg-[#808080]'
@@ -160,7 +160,7 @@ export function Window({
         </div>
       </div>
 
-      <div className="flex-1 min-h-0 flex">
+      <div className="flex-1 min-h-0 overflow-auto">
         {children}
       </div>
     </div>
